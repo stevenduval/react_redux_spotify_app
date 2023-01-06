@@ -2,3 +2,15 @@
   padding: 20px 80px;
 }
 
+.MuiGrid-container > .MuiGrid-item {
+  padding-top: 0px !important;
+  margin-top: 32px;
+}
+
+@media only screen and (min-width: 900px) {
+
+  .MuiGrid-item { 
+    height: 80vh;
+    overflow: auto;
+  }
+}
