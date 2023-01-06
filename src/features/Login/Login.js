@@ -6,7 +6,7 @@ export const Login = () => {
 
         // implicit grant spotify
         const clientID = '93f774ac0a7c4aa293f247f7769e0368';
-        const redirectURL = 'http://localhost:3000'
+        const redirectURL = 'https://spotify.stevenmduval.com'
         window.location = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURL}`;
 
     }
