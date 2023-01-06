@@ -20,7 +20,7 @@ export const Track = (props) => {
             return <IconButton onClick={addTrack} edge="end" aria-label="add"><AddIcon /></IconButton>
         }
     }
-    console.log(playing);
+ 
     return (
         <ListItem
             secondaryAction={renderPlaylistAction(isRemoval)} >

@@ -20,7 +20,6 @@ export const SearchResults = (props) => {
         dispatch(setPlaylistTracks([...playlistTracks, track]));
     }
 
-    console.log(data);
     return (
         <Grid item xs={12} md={6}>
            <TrackList data={data} onAdd={onAdd} isRemoval={false} playing={playing} handlePlay={handlePlay} />

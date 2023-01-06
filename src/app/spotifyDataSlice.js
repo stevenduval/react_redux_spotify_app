@@ -41,7 +41,7 @@ export const savePlaylist = createAsyncThunk(
             }
         }
         catch (error) {
-            console.log(error);
+            console.error(error);
         }
 
         // create playlist and get playlist id
@@ -58,14 +58,13 @@ export const savePlaylist = createAsyncThunk(
             }
         }
         catch (error) {
-            console.log(error);
+            console.error(error);
         }
 
         // add tracks to playlist
 
         try {
             const data = JSON.stringify({ uris });
-            console.log(data);
             const response = await fetch(`https://api.spotify.com/v1/users/${userID}/playlists/${playListID}/tracks`, {
                 headers: { Authorization: `Bearer ${accessToken}` },
                 method: 'POST',
@@ -77,7 +76,7 @@ export const savePlaylist = createAsyncThunk(
             }
         }
         catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }
 )
@@ -98,7 +97,6 @@ export const spotifyDataSlice = createSlice({
     initialState,
     reducers: {
         setToken: (state, action) => {
-            console.log(action.payload);
             state.accessToken = action.payload;
         },
         setPlaylistName: (state, action) => {
