@@ -1,7 +1,8 @@
-import { Grid } from "@mui/material";
-import { TrackList } from "../Track/TrackList";
-import { useDispatch, useSelector } from "react-redux";
-import { selectPlaylistTracks, selectSearchResults, setPlaylistTracks } from "../../app/spotifyDataSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { selectPlaylistTracks, selectSearchResults, setPlaylistTracks } from '../../app/spotifyDataSlice';
+import { TrackList } from '../Track/TrackList';
+import { Grid } from '@mui/material';
+
 
 export const SearchResults = (props) => {
 
@@ -12,8 +13,8 @@ export const SearchResults = (props) => {
 
     const dispatch = useDispatch();
 
+    // add track to playlist
     const onAdd = (track) => {
-        // add track to playlist
         if (playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
             return;
         }

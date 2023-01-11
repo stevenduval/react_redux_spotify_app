@@ -1,10 +1,9 @@
-import './App.css';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home } from '../features/Home/Home';
 import { CssBaseline } from '@mui/material';
+import './App.css';
 
 export const App = () => {
 

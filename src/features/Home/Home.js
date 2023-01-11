@@ -1,15 +1,12 @@
+import { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SearchBar } from '../Search/SearchBar';
 import { SearchResults } from '../Search/SearchResults';
 import { Playlist } from '../Playlist/Playlist';
 import { Login } from '../Login/Login';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAccessToken, setToken } from '../../app/spotifyDataSlice';
 import { Container, Grid } from '@mui/material';
-
-import { useDispatch, useSelector } from "react-redux";
-import { selectAccessToken, setToken } from "../../app/spotifyDataSlice";
-import { useNavigate } from "react-router-dom";
-
-import { useEffect, useState, useRef } from "react";
 
 
 export const Home = () => {
@@ -22,15 +19,15 @@ export const Home = () => {
     useEffect(() => {
         if (window.location.hash.substring(1).length > 0) {
             const params =  new URLSearchParams(window.location.hash.substring(1))
-            let accessToken = params.get("access_token");
-            const expiration = params.get("expires_in");
+            let accessToken = params.get('access_token');
+            const expiration = params.get('expires_in');
             window.setTimeout(() => accessToken = '', expiration * 1000);
             window.history.pushState('Access Token', null, '/');
-            window.sessionStorage.setItem("accessToken", accessToken);
+            window.sessionStorage.setItem('accessToken', accessToken);
             dispatch(setToken(accessToken));
             history('/');
-        } else if (window.sessionStorage.getItem("accessToken")) {
-            dispatch(setToken(window.sessionStorage.getItem("accessToken")));
+        } else if (window.sessionStorage.getItem('accessToken')) {
+            dispatch(setToken(window.sessionStorage.getItem('accessToken')));
         }
 
     }, [dispatch, history]);
@@ -41,6 +38,7 @@ export const Home = () => {
     // mutable reference to audio 
     const song = useRef(null);
 
+    // handle playing/stopping of song preview
     const handlePlay = (url) => {
         // if song playing, pause song and clear state
         if (song.current) { 
@@ -63,11 +61,10 @@ export const Home = () => {
         }
     }
 
-
     return (
         <>
             {accessTokenState.length === 0 && <Login />}
-            <Container maxWidth="lg" sx={{ mt: 5 }}>
+            <Container maxWidth='lg' sx={{ mt: 5 }}>
                 <SearchBar />
                 <Grid container spacing={4} sx={{ mt: 0 }}>
                     <SearchResults playing={playing} handlePlay={handlePlay} />
